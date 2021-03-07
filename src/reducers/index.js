@@ -1,9 +1,9 @@
-import { FETCHING_SMURF_ERROR, FETCHING_SMURF_START, FETCHING_SMURF_SUCCESS } from "../actions";
+import { FETCHING_SMURF_ERROR, FETCHING_SMURF_START, FETCHING_SMURF_SUCCESS, ADD_SMURF, UPDATE_ERROR } from "../actions";
 
 export const initialState = {
 	smurfs: [],
 	isLoading: false,
-	error_msg: ""
+	error: ""
 }
 
 const reducer = (state = initialState, action) => {
@@ -23,7 +23,16 @@ const reducer = (state = initialState, action) => {
 			return {
 				...state,
 				isLoading:false,
-				error_msg: action.payload
+				error: action.payload
+			}
+		case ADD_SMURF:
+			return {
+				...state,
+				smurfs: action.payload
+			}
+		case UPDATE_ERROR:
+			return {
+				error: "you missed some info about smurf"
 			}
 		default:
 			return state;

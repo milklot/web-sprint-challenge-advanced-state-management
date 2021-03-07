@@ -3,17 +3,32 @@ import axios from 'axios';
 export const FETCHING_SMURF_START = "FETCHING_SMURF_START";
 export const FETCHING_SMURF_SUCCESS = "FETCHING_SMURF_SUCCESS";
 export const FETCHING_SMURF_ERROR = "FETCHING_SMURF_ERROR";
+export const ADD_SMURF = "ADD_SMURF";
+export const UPDATE_ERROR = "UPDATE_ERROR";
 
 export const fetchSmurfs = () => (dispatch) => {
 	dispatch({type: FETCHING_SMURF_START});
 
-	axios.get("http://localhost:3000/")
+	axios.get("http://localhost:3333/smurfs")
 		.then((res) => {
-			console.log(res);
+			console.log(res.data);
+			dispatch({type: FETCHING_SMURF_SUCCESS,payload : res.data});
 		})
 		.catch((err) => {
-			console.log(err);
+			console.log(err.data);
+			dispatch({type: FETCHING_SMURF_ERROR,payload : err.data});
 		})
+};
+
+export const addSmurf = (updateSmurf) => (dispatch) => {
+	axios.post("http://localhost:3333/smurfs", updateSmurf)
+		.then((res) => {
+			dispatch({type: ADD_SMURF, payload: res.data});
+		})
+};
+
+export const updateError = () => (dispatch) => {
+	dispatch({type: UPDATE_ERROR});
 }
 
 

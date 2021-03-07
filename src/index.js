@@ -9,7 +9,7 @@ import logger from "redux-logger";
 import "./index.css";
 import App from "./App";
 
-const store = createStore(reducer, applyMiddleware(thunk, logger));
+const store = createStore(reducer, applyMiddleware( logger, thunk));
 
 const { worker } = require('./mocks/browser');
 worker.start();
