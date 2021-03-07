@@ -3,7 +3,7 @@ import { FETCHING_SMURF_ERROR, FETCHING_SMURF_START, FETCHING_SMURF_SUCCESS, ADD
 export const initialState = {
 	smurfs: [],
 	isLoading: false,
-	error: ""
+	error: "",
 }
 
 const reducer = (state = initialState, action) => {
@@ -34,7 +34,7 @@ const reducer = (state = initialState, action) => {
 			return {
 				...state,
 				// isLoading: true,
-				error: "you missed some info about smurf"
+				errorMessage: action.payload
 			}
 		default:
 			return state;

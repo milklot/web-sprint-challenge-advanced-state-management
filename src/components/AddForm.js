@@ -20,12 +20,15 @@ const AddForm = (props) => {
     const handleSubmit = e => {
         e.preventDefault();
         if (state.name === "" || state.position === "" || state.nickname === "") {
-            props.updateError("missed some info");
+            errorMessage = "missed some info about smurf";
+            props.updateError(errorMessage);
         }
         else {
             props.addSmurf(state);
         }
     }
+
+    var errorMessage = "";
 
     return(<section>
         <h2>Add Smurf</h2>
@@ -56,7 +59,7 @@ const AddForm = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        errorMessage: state.error
+        errorMessage: state.errorMessage
     }
 }
 

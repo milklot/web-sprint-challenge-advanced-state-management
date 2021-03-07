@@ -15,7 +15,7 @@ export const fetchSmurfs = () => (dispatch) => {
 			dispatch({type: FETCHING_SMURF_SUCCESS,payload : res.data});
 		})
 		.catch((err) => {
-			//console.log(err.data);
+			console.log(err.data);
 			dispatch({type: FETCHING_SMURF_ERROR,payload : err.data});
 		})
 };
@@ -27,8 +27,8 @@ export const addSmurf = (updateSmurf) => (dispatch) => {
 		})
 };
 
-export const updateError = () => (dispatch) => {
-	dispatch({type: UPDATE_ERROR});
+export const updateError = (errorMessage) => {
+	return ({type: UPDATE_ERROR, payload: errorMessage});
 }
 
 
