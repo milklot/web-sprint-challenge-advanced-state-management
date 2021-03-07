@@ -32,7 +32,8 @@ const reducer = (state = initialState, action) => {
 			}
 		case UPDATE_ERROR:
 			return {
-				isLoading: true,
+				...state,
+				// isLoading: true,
 				error: "you missed some info about smurf"
 			}
 		default:
